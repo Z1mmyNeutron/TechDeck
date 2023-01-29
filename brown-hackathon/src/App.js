@@ -3,7 +3,7 @@ import './App.css';
 import {postData} from './serverApi/server.js';
 import React from "react";
 
-import {Filler} from './pages/filler'
+import {Login} from './pages/login'
 import {About} from './pages/about'
 import { createRoot } from "react-dom/client";
 import {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       <div>
         <h1>Router is working</h1>
         <Link to="/about"> About Us</Link>
-        <Link to="/filler"> Filler</Link>
+        <Link to="/login"> Login</Link>
       </div>
     ),
   },
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
     element: <About/>
   },
   {
-    path: "/filler",
-    element: <Filler/>
+    path: "/login",
+    element: <Login/>
   },
 ]);
 
