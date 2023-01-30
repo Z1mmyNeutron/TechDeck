@@ -8,6 +8,9 @@ export function Login(){
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [serverData, setServerData] = useState(undefined);
+
     return(
         <div class ="topLevel">
             <div class="username">
@@ -31,9 +34,11 @@ export function Login(){
             <input type="button" value="save" onClick={async (event) => {
                 let result = await postData("http://localhost:4000/login/", 
                 {username : username, password : password})
-
-                console.log(result)}}
+                setServerData(result.body.data);
+            }}
+            
                 />
+                {serverData && <p>{JSON.stringify(serverData)}</p>}
         </div>
     )
 }

@@ -5,6 +5,7 @@ import React from "react";
 
 import {Login} from './pages/login'
 import {About} from './pages/about'
+import {CreateUser} from './pages/createUser'
 import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         <h1>Router is working</h1>
         <Link to="/about"> About Us</Link>
         <Link to="/login"> Login</Link>
+        <Link to="/createUser">Create User</Link>
       </div>
     ),
   },
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login/>
   },
+  {
+    path: "/createUser",
+    element: <CreateUser/>
+  }
 ]);
 
 {postData("http://localhost:4000", "")};
