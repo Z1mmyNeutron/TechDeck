@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.Navbar{
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  font-size: 30px;
+}
