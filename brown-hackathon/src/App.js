@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <div>
-        <h1>Router is working</h1>
+        <h1>Home Page</h1>
         <Link to="/about"> About Us</Link>
         <Link to="/login"> Login</Link>
         <Link to="/createUser">Create User</Link>
