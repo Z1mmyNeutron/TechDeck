@@ -1,5 +1,12 @@
 Christina Zimmer:
+
 to start: 
+ 1. start at JS_Final_Project 
+ 2. ls 
+ 3. cd brown-hackathon 
+ 4. npm install
+
+To run
 1.Open two terminals.
 
 In the first terminal we are going to start the front end server: Front end:
