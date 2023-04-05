@@ -27,6 +27,8 @@ In the first terminal we are going to start the front end server: Front end:
  6. cd api 
  7. npm run start
 
+ David Ranoia
+
 
 
 
