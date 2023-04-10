@@ -1,56 +1,38 @@
+# RUN SITE
+
 Christina Zimmer:
 
-to start: 
- 1. start at JS_Final_Project 
- 2. ls 
- 3. cd brown-hackathon 
- 4. npm install
+to start:
+
+1. start at JS_Final_Project
+2. ls
+3. cd brown-hackathon
+4. npm install
 
 To run
 1.Open two terminals.
 
 In the first terminal we are going to start the front end server: Front end:
- 1. start at JS_Final_Project 
- 2. ls 
- 3. cd brown-hackathon 
- 4.ls 
- 5. cd src 
- 6. npm run start 
- 7. Open browser (Preferably chrome) and go to localhost: + port number 
- 
- Open second terminal for backend: Back end: 
- 1. start at JS_Final_Project
- 2. ls 
- 3. cd brown-hackathon 
- 4. ls 
- 5. cd back-end 
- 6. cd api 
- 7. npm run start
 
- David Ranoia
+1. start at JS_Final_Project
+2. ls
+3. cd brown-hackathon
+4. ls
+5. cd src
+6. npm run start
+7. Open browser (Preferably chrome) and go to localhost: + port number
 
+Open second terminal for backend: Back end:
 
+1. start at JS_Final_Project
+2. ls
+3. cd brown-hackathon
+4. ls
+5. cd back-end
+6. cd api
+7. npm run start
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
