@@ -12,4 +12,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET request to '/api/articles/:id'
+router.get("/:id", async (req, res) => {
+  try {
+    const article = await Article.findById(req.params.id);
+    if (article) {
+      res.json(article);
+    } else {
+      res.status(404).json({ message: "Article not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;

@@ -206,3 +206,7 @@ img {
 .main-content-wrapper.dark-mode {
   background-color: #222;
 }
+.thumbnail-link {
+  text-decoration: none;
+  color: inherit;
+}
