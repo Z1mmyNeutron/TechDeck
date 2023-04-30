@@ -6,7 +6,6 @@ mongoose.set("strictQuery", false);
 var express = require("express");
 const cors = require("cors");
 const db = require("./db");
-const Article = require("./models/articles");
 
 var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -20,20 +19,17 @@ const articlesRouter = require("./routes/articles");
 var app = express();
 const BACKPORT = process.env.BACKPORT || 3000;
 
-const bodyParser = require("body-parser");
-
-app.use(cors());
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
 app.use(logger("dev"));
-app.use(express.json());
+app.use(cors()); // To allow cross-origin requests
+app.use(express.json()); // To parse JSON bodies in the request
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/testAPI", testAPIRouter);
@@ -54,19 +50,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
-});
-
-//database addition from david
-app.use(cors()); // To allow cross-origin requests
-app.use(express.json()); // To parse JSON bodies in the request
-
-app.get("/endpoint", function (req, res) {
-  // Use Mongoose to interact with your MongoDB Atlas database here and send the result with res.json()
-});
-// Endpoint to get all articles
-app.get("/api/articles", async (req, res) => {
-  const articles = await Article.find().sort("publishedAt");
-  res.send(articles);
 });
 
 app.listen(BACKPORT, function () {

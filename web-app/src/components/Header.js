@@ -9,13 +9,32 @@ import {
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 import ThemeContext from "./ThemeContext";
+import axios from "axios"; // import axios
+import { useNavigate } from "react-router-dom"; // import useNavigate hook
+import Results from "../pages/results";
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [searchTerm, setSearchTerm] = useState(""); // state to hold the search term
+  const navigate = useNavigate(); // useNavigate hook
 
   const handleToggle = () => {
     setExpanded(!expanded);
+  };
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    try {
+      // make a GET request to your server with the search term
+      const response = await axios.get(
+        `http://localhost:3005/api/articles/search?term=${searchTerm}`
+      );
+      // pass the response data to the results page using state
+      navigate("/results", { state: { data: response.data } });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -71,12 +90,14 @@ const Header = () => {
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
-          <form className="d-flex" role="search">
+          <form className="d-flex" role="search" onSubmit={handleSearch}>
             <input
               className="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
             />
             <Button variant="outline-success" type="submit">
               <FontAwesomeIcon icon={faSearch} />

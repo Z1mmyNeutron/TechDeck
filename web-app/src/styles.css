@@ -27,6 +27,7 @@ h1 {
   line-height: 1.1;
   margin-bottom: 1.5rem;
   padding: 20px;
+  padding-top: 40px;
 }
 
 h2 {
@@ -209,4 +210,52 @@ img {
 .thumbnail-link {
   text-decoration: none;
   color: inherit;
+}
+.results-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.results-grid > * {
+  flex-basis: calc(50% - 1em); /* 1em for space between */
+}
+
+.main-content-wrapper {
+  padding: 20px;
+}
+.thumbnail-container {
+  padding: 20px;
+}
+
+.thumbnail-container img {
+  margin-bottom: 10px;
+}
+
+.thumbnail-container h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.thumbnail-container p {
+  margin-top: 5px;
+}
+.category-header {
+  padding-top: 40px;
+  color: #333;
+  background-color: #fff;
+}
+
+.category-header.dark-mode {
+  color: #fff;
+  background-color: #222;
+}
+.two-column-layout-wrapper {
+  padding: 0 20px; /* add padding to left and right sides */
 }
