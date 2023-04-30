@@ -109,8 +109,8 @@ img {
 }
 
 .section-header {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   display: inline-block;
   padding: 0 10px;
   font-weight: bold;
@@ -118,6 +118,11 @@ img {
   line-height: 28px;
   position: relative;
   z-index: 1;
+}
+
+.dark-mode .section-header {
+  background-color: black;
+  color: white;
 }
 
 .line {

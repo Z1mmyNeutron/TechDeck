@@ -1,1 +1,4 @@
+#dont need node folders
 node_modules/
+# dontenv environment variable files
+.env

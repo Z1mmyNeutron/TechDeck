@@ -1,31 +1,9 @@
-import React, { useContext } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import "../styles.css";
 import ThemeContext from "./ThemeContext";
-
-const Article = ({ title, description, imgSrc }) => (
-  <Card
-    className="article mb-4"
-    border="0"
-    style={{ boxShadow: "none", backgroundColor: "transparent" }}
-  >
-    <Card.Img variant="top" src={imgSrc} />
-    <Card.Body>
-      <Card.Title>{title}</Card.Title>
-      <Card.Text>{description}</Card.Text>
-    </Card.Body>
-  </Card>
-);
-
-const FeaturedArticle = ({ title, description, imgSrc }) => (
-  <Card className="featured-article mb-4">
-    <Card.Img variant="top" src={imgSrc} />
-    <Card.Body>
-      <Card.Title>{title}</Card.Title>
-      <Card.Text>{description}</Card.Text>
-    </Card.Body>
-  </Card>
-);
+import axios from "axios";
+import Thumbnail from "./Thumbnail";
 
 const SectionHeader = ({ title }) => (
   <div className="section-header">
@@ -37,6 +15,19 @@ const Line = () => <div className="line"></div>;
 
 const MainContent = () => {
   const { theme } = useContext(ThemeContext);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3005/api/articles")
+      .then((response) => {
+        setArticles(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
+  }, []);
+
   return (
     <div
       className={`main-content-wrapper ${theme === "dark" ? "dark-mode" : ""}`}
@@ -53,58 +44,37 @@ const MainContent = () => {
         </Row>
         <Row>
           <Col md={3}>
-            <Article
-              title="Left Main Article Title 1"
-              description="This is a short description of the featured article."
-              imgSrc="https://via.placeholder.com/250x150"
-            />
-            <Article
-              title="Left Main Article Title 2"
-              description="This is a short description of the main article."
-              imgSrc="https://via.placeholder.com/250x150"
-            />
-            <Article
-              title="Left Main Article Title 3"
-              description="This is a short description of the main article."
-              imgSrc="https://via.placeholder.com/250x150"
-            />
+            {articles.slice(0, 10).map((article) => (
+              <Thumbnail
+                key={article._id}
+                title={article.title}
+                description={article.description}
+                imgSrc={article.urlToImage}
+              />
+            ))}
           </Col>
           <Col md={6}>
-            <Article
-              title="Middle Large Main Article Title 1"
-              description="This is a short description of the main article."
-              imgSrc="https://via.placeholder.com/500x250"
-            />
-            <Article
-              title="Middle Large Main Article Title 2"
-              description="This is a short description of the main article."
-              imgSrc="https://via.placeholder.com/500x250"
-            />
-            <Article
-              title="Middle Large Main Article Title 3"
-              description="This is a short description of the main article."
-              imgSrc="https://via.placeholder.com/500x250"
-            />
+            {articles.slice(10, 20).map((article) => (
+              <Thumbnail
+                key={article._id}
+                title={article.title}
+                description={article.description}
+                imgSrc={article.urlToImage}
+              />
+            ))}
           </Col>
           <Col md={3}>
             <div className="third-column">
               <SectionHeader title="Most Recent" />
               <Line />
-              <Article
-                title="Left Most Recent Article Title 1"
-                description="This is a short description of the sidebar article."
-                imgSrc="https://via.placeholder.com/250x150"
-              />
-              <Article
-                title="Left Most Recent Article Title 2"
-                description="This is a short description of the sidebar article."
-                imgSrc="https://via.placeholder.com/250x150"
-              />
-              <Article
-                title="Left Most Recent Article Title 3"
-                description="This is a short description of the sidebar article."
-                imgSrc="https://via.placeholder.com/250x150"
-              />
+              {articles.slice(20, 30).map((article) => (
+                <Thumbnail
+                  key={article._id}
+                  title={article.title}
+                  description={article.description}
+                  imgSrc={article.urlToImage}
+                />
+              ))}
             </div>
           </Col>
         </Row>

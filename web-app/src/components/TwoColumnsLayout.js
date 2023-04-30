@@ -1,80 +1,74 @@
-import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import "../styles.css";
+import ThemeContext from "./ThemeContext";
+import Thumbnail from "./Thumbnail";
 
-const Article = ({ title, description, imgSrc }) => (
-  <Card className="mb-4">
-    <Card.Img variant="top" src={imgSrc} />
-    <Card.Body>
-      <Card.Title>{title}</Card.Title>
-      <Card.Text>{description}</Card.Text>
-    </Card.Body>
-  </Card>
-);
-
-const FeaturedArticle = ({ title, description, imgSrc }) => (
-  <Card className="featured-article mb-4">
-    <Card.Img
-      variant="top"
-      src={imgSrc}
-      style={{ width: "100%", height: "400px" }}
-    />
-    <Card.Body>
-      <Card.Title>{title}</Card.Title>
-      <Card.Text>{description}</Card.Text>
-    </Card.Body>
-  </Card>
-);
-
-const SectionHeader = ({ title }) => (
-  <div className="section-header">
-    <span>{title}</span>
-  </div>
-);
+const SectionHeader = ({ title }) => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <div className={`section-header ${theme === "dark" ? "dark-mode" : ""}`}>
+      <span>{title}</span>
+    </div>
+  );
+};
 
 const Line = () => <div className="line"></div>;
 
-const TwoColumnsLayout = () => {
+const TwoColumnsLayout = ({ pageCategory }) => {
+  const { theme } = useContext(ThemeContext);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3005/api/articles")
+      .then((response) => response.json())
+      .then((data) => setArticles(data));
+  }, []);
+
+  const filteredArticles = articles.filter(
+    (article) => article.category === pageCategory
+  );
+
   return (
-    <Container>
-      <Row className="mt-4">
-        <Col md={12}>
-          <SectionHeader title="Variable" />
-          <Line />
-        </Col>
-      </Row>
-      <Row>
-        <Col md={7}>
-          <FeaturedArticle
-            title="Left Main Article Title 1"
-            description="This is a short description of the main article."
-            imgSrc="https://via.placeholder.com/500x200"
-          />
-          <FeaturedArticle
-            title="Left Main Article Title 2"
-            description="This is a short description of the main article."
-            imgSrc="https://via.placeholder.com/500x200"
-          />
-        </Col>
-        <Col md={5}>
-          <Article
-            title="Right Main Article Title 1"
-            description="This is a short description of the main article."
-            imgSrc="https://via.placeholder.com/250x150"
-          />
-          <Article
-            title="Right Main Article Title 2"
-            description="This is a short description of the main article."
-            imgSrc="https://via.placeholder.com/250x150"
-          />
-          <Article
-            title="Right Main Article Title 2"
-            description="This is a short description of the main article."
-            imgSrc="https://via.placeholder.com/250x150"
-          />
-        </Col>
-      </Row>
-    </Container>
+    <div
+      className={`two-column-layout-wrapper ${
+        theme === "dark" ? "dark-mode" : ""
+      }`}
+    >
+      <Container
+        fluid
+        className={`two-column-layout ${theme === "dark" ? "dark-mode" : ""}`}
+      >
+        <Row className="mt-4">
+          <Col md={12}>
+            <SectionHeader title={pageCategory} />
+            <Line />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={7}>
+            {filteredArticles.slice(0, 10).map((article, index) => (
+              <Thumbnail
+                key={index}
+                title={article.title}
+                description={article.description}
+                imgSrc={article.urlToImage}
+              />
+            ))}
+          </Col>
+          <Col md={5}>
+            {filteredArticles.slice(10, 20).map((article, index) => (
+              <Thumbnail
+                key={index}
+                title={article.title}
+                description={article.description}
+                imgSrc={article.urlToImage}
+              />
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
