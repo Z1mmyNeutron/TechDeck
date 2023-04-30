@@ -47,6 +47,7 @@ const MainContent = () => {
             {articles.slice(0, 10).map((article) => (
               <Thumbnail
                 key={article._id}
+                id={article._id} // add this line
                 title={article.title}
                 description={article.description}
                 imgSrc={article.urlToImage}
@@ -57,6 +58,7 @@ const MainContent = () => {
             {articles.slice(10, 20).map((article) => (
               <Thumbnail
                 key={article._id}
+                id={article._id} // add this line
                 title={article.title}
                 description={article.description}
                 imgSrc={article.urlToImage}
@@ -70,6 +72,7 @@ const MainContent = () => {
               {articles.slice(20, 30).map((article) => (
                 <Thumbnail
                   key={article._id}
+                  id={article._id} // add this line
                   title={article.title}
                   description={article.description}
                   imgSrc={article.urlToImage}

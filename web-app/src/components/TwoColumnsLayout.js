@@ -50,6 +50,7 @@ const TwoColumnsLayout = ({ pageCategory }) => {
             {filteredArticles.slice(0, 10).map((article, index) => (
               <Thumbnail
                 key={index}
+                id={article._id}
                 title={article.title}
                 description={article.description}
                 imgSrc={article.urlToImage}
@@ -60,6 +61,7 @@ const TwoColumnsLayout = ({ pageCategory }) => {
             {filteredArticles.slice(10, 20).map((article, index) => (
               <Thumbnail
                 key={index}
+                id={article._id}
                 title={article.title}
                 description={article.description}
                 imgSrc={article.urlToImage}

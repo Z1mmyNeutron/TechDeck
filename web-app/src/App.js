@@ -15,6 +15,7 @@ import { Technology } from "./pages/technology";
 import { Results } from "./pages/results";
 import Legal from "./pages/legal";
 import Privacy from "./pages/privacy";
+import SingleArticle from "./pages/singleArticle";
 //components
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
@@ -38,6 +39,16 @@ const router = createBrowserRouter([
       <>
         <Header />
         <MainContent />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/article/:id",
+    element: (
+      <>
+        <Header />
+        <SingleArticle />
         <Footer />
       </>
     ),
