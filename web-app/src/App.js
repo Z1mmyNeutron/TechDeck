@@ -12,7 +12,8 @@ import About from "./pages/about";
 import { Science } from "./pages/science";
 import { Business } from "./pages/business";
 import { Technology } from "./pages/technology";
-import { Results } from "./pages/results";
+import Results from "./pages/results";
+
 import Legal from "./pages/legal";
 import Privacy from "./pages/privacy";
 import SingleArticle from "./pages/singleArticle";
@@ -47,9 +48,7 @@ const router = createBrowserRouter([
     path: "/article/:id",
     element: (
       <>
-        <Header />
         <SingleArticle />
-        <Footer />
       </>
     ),
   },
@@ -107,9 +106,7 @@ const router = createBrowserRouter([
     path: "/science",
     element: (
       <>
-        <Header />
         <Science />
-        <Footer />
       </>
     ),
   },
@@ -117,9 +114,7 @@ const router = createBrowserRouter([
     path: "/business",
     element: (
       <>
-        <Header />
         <Business />
-        <Footer />
       </>
     ),
   },
@@ -127,9 +122,7 @@ const router = createBrowserRouter([
     path: "/technology",
     element: (
       <>
-        <Header />
         <Technology />
-        <Footer />
       </>
     ),
   },

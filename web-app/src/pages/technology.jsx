@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { postData } from "../serverApi/server";
 import TwoColumnsLayout from "../components/TwoColumnsLayout";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 const pageCategory = "technology";
 
 export function Technology() {
   return (
     <div>
-      <h1>Tech News</h1>
+      <Header />
       <TwoColumnsLayout pageCategory={pageCategory} />
+      <Footer />
     </div>
   );
 }

@@ -44,10 +44,10 @@ const MainContent = () => {
         </Row>
         <Row>
           <Col md={3}>
-            {articles.slice(0, 10).map((article) => (
+            {articles.slice(0, 12).map((article) => (
               <Thumbnail
                 key={article._id}
-                id={article._id} // add this line
+                id={article._id}
                 title={article.title}
                 description={article.description}
                 imgSrc={article.urlToImage}
@@ -55,7 +55,7 @@ const MainContent = () => {
             ))}
           </Col>
           <Col md={6}>
-            {articles.slice(10, 20).map((article) => (
+            {articles.slice(12, 20).map((article) => (
               <Thumbnail
                 key={article._id}
                 id={article._id} // add this line

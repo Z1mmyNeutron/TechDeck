@@ -8,7 +8,7 @@ const Thumbnail = ({ id, title, description, imgSrc }) => {
       to={`/article/${id}`}
       style={{ textDecoration: "none", color: "inherit" }}
     >
-      <div className="thumbnail">
+      <div className="thumbnail thumbnail-container">
         <img src={imgSrc} alt={title} />
         <h3>{title}</h3>
         <p>{description}</p>

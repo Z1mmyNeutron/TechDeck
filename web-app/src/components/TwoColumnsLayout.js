@@ -4,15 +4,6 @@ import "../styles.css";
 import ThemeContext from "./ThemeContext";
 import Thumbnail from "./Thumbnail";
 
-const SectionHeader = ({ title }) => {
-  const { theme } = useContext(ThemeContext);
-  return (
-    <div className={`section-header ${theme === "dark" ? "dark-mode" : ""}`}>
-      <span>{title}</span>
-    </div>
-  );
-};
-
 const Line = () => <div className="line"></div>;
 
 const TwoColumnsLayout = ({ pageCategory }) => {
@@ -35,16 +26,17 @@ const TwoColumnsLayout = ({ pageCategory }) => {
         theme === "dark" ? "dark-mode" : ""
       }`}
     >
+      <h1 className={`category-header ${theme === "dark" ? "dark-mode" : ""}`}>
+        {pageCategory.charAt(0).toUpperCase() + pageCategory.slice(1)} News
+      </h1>
+      <div className="section-header dark-mode">
+        <span>{pageCategory}</span>
+      </div>
+      <Line />
       <Container
         fluid
         className={`two-column-layout ${theme === "dark" ? "dark-mode" : ""}`}
       >
-        <Row className="mt-4">
-          <Col md={12}>
-            <SectionHeader title={pageCategory} />
-            <Line />
-          </Col>
-        </Row>
         <Row>
           <Col md={7}>
             {filteredArticles.slice(0, 10).map((article, index) => (

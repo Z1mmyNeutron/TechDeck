@@ -14,4 +14,7 @@ const articleSchema = new mongoose.Schema({
   category: String,
 });
 
+// Create a text index on the title and description fields
+articleSchema.index({ title: "text", description: "text" });
+
 module.exports = mongoose.model("Article", articleSchema);

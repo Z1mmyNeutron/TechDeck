@@ -10,7 +10,7 @@ router.get("/fetch-news/:category", async (req, res) => {
 
   try {
     const response = await axios.get(
-      `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=25&apiKey=291800c0536b4545b0edfd7c7e6ed807`
+      `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=100&apiKey=291800c0536b4545b0edfd7c7e6ed807`
     );
     response.data.articles.forEach(async (article) => {
       let newArticle = new Article({
