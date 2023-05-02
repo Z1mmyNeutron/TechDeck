@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import "../styles.css";
 import ThemeContext from "./ThemeContext";
 import Thumbnail from "./Thumbnail";
@@ -15,6 +15,20 @@ const TwoColumnsLayout = ({ pageCategory }) => {
       .then((response) => response.json())
       .then((data) => setArticles(data));
   }, []);
+
+  const handleMostRecent = () => {
+    setArticles((prevArticles) =>
+      [...prevArticles].sort(
+        (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+      )
+    );
+  };
+
+  const handleRandom = () => {
+    setArticles((prevArticles) =>
+      [...prevArticles].sort(() => 0.5 - Math.random())
+    );
+  };
 
   const filteredArticles = articles.filter(
     (article) => article.category === pageCategory
@@ -32,6 +46,16 @@ const TwoColumnsLayout = ({ pageCategory }) => {
       <div className="section-header dark-mode">
         <span>{pageCategory}</span>
       </div>
+      <Dropdown style={{ paddingTop: "20px" }}>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Order By
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item onClick={handleMostRecent}>Most Recent</Dropdown.Item>
+          <Dropdown.Item onClick={handleRandom}>Random</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
       <Line />
       <Container
         fluid
