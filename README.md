@@ -26,6 +26,7 @@ Front end:
 
 1. start in JS_Final_Project folder
 2. cd web-app/src
+3. npm install
 3. npm run start
 4. Open browser (Preferably chrome) and go to localhost:3000
 
