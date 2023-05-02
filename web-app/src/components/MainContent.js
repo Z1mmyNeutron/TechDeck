@@ -4,6 +4,8 @@ import "../styles.css";
 import ThemeContext from "./ThemeContext";
 import axios from "axios";
 import Thumbnail from "./Thumbnail";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const SectionHeader = ({ title }) => (
   <div className="section-header">
@@ -32,6 +34,7 @@ const MainContent = () => {
     <div
       className={`main-content-wrapper ${theme === "dark" ? "dark-mode" : ""}`}
     >
+      <Header />
       <Container
         fluid
         className={`main-content ${theme === "dark" ? "dark-mode" : ""}`}
@@ -82,6 +85,7 @@ const MainContent = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };
