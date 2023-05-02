@@ -1,45 +1,87 @@
-import React, {useState} from "react";
-import {postData} from '../serverApi/server';
-<h1>Proof that login works</h1>
+import React, { useState } from "react";
+import { postData } from "../serverApi/server";
+import {
+  Container,
+  Form,
+  Button,
+  FormGroup,
+  FormControl,
+  ButtonGroup,
+} from "react-bootstrap";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../styles.css";
 
-
-
-export function Login(){
-
+export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [serverData, setServerData] = useState(undefined);
 
-    return(
-        <div class ="topLevel">
-            <div class="username">
-                <label>username:</label>
-                <input type="text" name="username" onChange={(event) => {
-                    setUsername(event.target.value)
-                }}
-            />   
-            <p>username text: {username}</p>
-            </div>
+  return (
+    <div className="about-page">
+      <Header />
+      <Container className="content">
+        <Form className="login-form">
+          <h1 className="text-center">Login</h1>
 
-            <div class="password">
-                <label>password: </label>
-                <input type="text" name="password" onChange={(event) =>{
-                    setPassword(event.target.value)
-                    }}
-                 />
-            </div>
-            <p>password: {password}</p>
+          <FormGroup>
+            <Form.Label>Username</Form.Label>
+            <FormControl
+              type="text"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+            />
+          </FormGroup>
 
-            <input type="button" value="save" onClick={async (event) => {
-                let result = await postData("http://localhost:4000/login/", 
-                {username : username, password : password})
+          <FormGroup>
+            <Form.Label>Password</Form.Label>
+            <FormControl
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+            />
+          </FormGroup>
+
+          <ButtonGroup className="mt-3">
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={async (event) => {
+                event.preventDefault(); // Prevent page reload
+                let result = await postData("http://localhost:3005/login", {
+                  username: username,
+                  password: password,
+                });
                 setServerData(result.body.data);
-            }}
-            
-                />
-                {serverData && <p>{JSON.stringify(serverData)}</p>}
-        </div>
-    )
+              }}
+            >
+              Login
+            </Button>
+
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => {
+                // registration page needs to be built called /createUser/
+                console.log("Register button clicked");
+              }}
+            >
+              Register
+            </Button>
+          </ButtonGroup>
+
+          {serverData && <p>{JSON.stringify(serverData)}</p>}
+        </Form>
+      </Container>
+      <Footer />
+    </div>
+  );
 }
 export default Login;

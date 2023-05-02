@@ -5,14 +5,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
 //pages
-import { Art } from "./pages/art";
-import { Code } from "./pages/code";
+
 import { Login } from "./pages/login";
 import About from "./pages/about";
 import { Science } from "./pages/science";
 import { Business } from "./pages/business";
 import { Technology } from "./pages/technology";
 import Results from "./pages/results";
+import ErrorPage from "./pages/errorPage";
 
 import Legal from "./pages/legal";
 import Privacy from "./pages/privacy";
@@ -38,9 +38,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Header />
         <MainContent />
-        <Footer />
       </>
     ),
   },
@@ -52,33 +50,12 @@ const router = createBrowserRouter([
       </>
     ),
   },
-  {
-    path: "/art",
-    element: (
-      <>
-        <Header />
-        <Art />
-        <Footer />
-      </>
-    ),
-  },
-  {
-    path: "/code",
-    element: (
-      <>
-        <Header />
-        <Code />
-        <Footer />
-      </>
-    ),
-  },
+
   {
     path: "/about",
     element: (
       <>
-        <Header />
         <About />
-        <Footer />
       </>
     ),
   },
@@ -86,14 +63,12 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <>
-        <Header />
         <Login />
-        <Footer />
       </>
     ),
   },
   {
-    path: "/createUser",
+    path: "/createUser", //not used yet
     element: (
       <>
         <Header />
@@ -130,9 +105,7 @@ const router = createBrowserRouter([
     path: "/results",
     element: (
       <>
-        <Header />
         <Results />
-        <Footer />
       </>
     ),
   },
@@ -140,9 +113,7 @@ const router = createBrowserRouter([
     path: "/legal",
     element: (
       <>
-        <Header />
         <Legal />
-        <Footer />
       </>
     ),
   },
@@ -150,9 +121,15 @@ const router = createBrowserRouter([
     path: "/privacy",
     element: (
       <>
-        <Header />
         <Privacy />
-        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <>
+        <ErrorPage />
       </>
     ),
   },

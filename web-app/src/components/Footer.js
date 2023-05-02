@@ -12,17 +12,17 @@ const Footer = () => {
         >
           <ul className="list-inline footer-links">
             <li className="list-inline-item">
-              <a className="text-white" href="/about">
+              <a className="text-white link-padding" href="/about">
                 About Us / Contact Us
               </a>
             </li>
             <li className="list-inline-item">
-              <a className="text-white" href="/privacy">
+              <a className="text-white link-padding" href="/privacy">
                 Privacy Policy
               </a>
             </li>
             <li className="list-inline-item">
-              <a className="text-white" href="/legal">
+              <a className="text-white link-padding" href="/legal">
                 Terms of Use
               </a>
             </li>

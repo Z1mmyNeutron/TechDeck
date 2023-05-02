@@ -160,7 +160,7 @@ img {
   color: white;
   text-align: center;
   padding: 5px;
-  z-index: 9999; /* Set a high z-index value to keep the footer above other elements */
+  z-index: 9999;
 }
 
 .navbar {
@@ -212,10 +212,11 @@ img {
   color: inherit;
 }
 .results-container {
-  margin: 20px;
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 }
 .results-grid {
   display: flex;
@@ -228,7 +229,8 @@ img {
 }
 
 .main-content-wrapper {
-  padding: 20px;
+  padding: 0 20px;
+  padding-top: 20px;
 }
 .thumbnail-container {
   padding: 20px;
@@ -247,7 +249,6 @@ img {
   margin-top: 5px;
 }
 .category-header {
-  padding-top: 40px;
   color: #333;
   background-color: #fff;
 }
@@ -257,5 +258,31 @@ img {
   background-color: #222;
 }
 .two-column-layout-wrapper {
-  padding: 0 20px; /* add padding to left and right sides */
+  padding: 0 20px;
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+  padding-top: 40px;
+}
+
+Header,
+Footer {
+  flex-shrink: 0;
+}
+.link-padding {
+  padding: 0 30px;
+}
+.legal-page {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
