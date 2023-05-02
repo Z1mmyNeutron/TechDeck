@@ -10,7 +10,7 @@ const Thumbnail = ({ id, title, description, imgSrc }) => {
     >
       <div className="thumbnail thumbnail-container">
         <img src={imgSrc} alt={title} />
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <p>{description}</p>
       </div>
     </Link>

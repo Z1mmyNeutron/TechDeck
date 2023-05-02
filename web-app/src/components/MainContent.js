@@ -18,12 +18,28 @@ const Line = () => <div className="line"></div>;
 const MainContent = () => {
   const { theme } = useContext(ThemeContext);
   const [articles, setArticles] = useState([]);
+  const [mostRecent, setMostRecent] = useState([]);
+  const [todayPicks, setTodayPicks] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:3005/api/articles")
       .then((response) => {
-        setArticles(response.data);
+        const fetchedArticles = response.data;
+
+        // Sort articles by 'publishedAt' in descending order (most recent first)
+        const sortedArticles = [...fetchedArticles].sort(
+          (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+        );
+        setMostRecent(sortedArticles.slice(0, 10));
+
+        // random articles for today's picks
+        const shuffledArticles = [...fetchedArticles].sort(
+          () => 0.5 - Math.random()
+        );
+        setTodayPicks(shuffledArticles.slice(0, 20));
+
+        setArticles(fetchedArticles);
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);
@@ -47,7 +63,7 @@ const MainContent = () => {
         </Row>
         <Row>
           <Col md={3}>
-            {articles.slice(0, 12).map((article) => (
+            {todayPicks.slice(0, todayPicks.length / 2).map((article) => (
               <Thumbnail
                 key={article._id}
                 id={article._id}
@@ -58,24 +74,26 @@ const MainContent = () => {
             ))}
           </Col>
           <Col md={6}>
-            {articles.slice(12, 20).map((article) => (
-              <Thumbnail
-                key={article._id}
-                id={article._id} // add this line
-                title={article.title}
-                description={article.description}
-                imgSrc={article.urlToImage}
-              />
-            ))}
+            {todayPicks
+              .slice(todayPicks.length / 2, todayPicks.length)
+              .map((article) => (
+                <Thumbnail
+                  key={article._id}
+                  id={article._id}
+                  title={article.title}
+                  description={article.description}
+                  imgSrc={article.urlToImage}
+                />
+              ))}
           </Col>
           <Col md={3}>
             <div className="third-column">
               <SectionHeader title="Most Recent" />
               <Line />
-              {articles.slice(20, 30).map((article) => (
+              {mostRecent.map((article) => (
                 <Thumbnail
                   key={article._id}
-                  id={article._id} // add this line
+                  id={article._id}
                   title={article.title}
                   description={article.description}
                   imgSrc={article.urlToImage}
