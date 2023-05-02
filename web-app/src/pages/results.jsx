@@ -8,12 +8,13 @@ import "../styles.css";
 const Results = () => {
   const location = useLocation();
   const data = location.state?.data || [];
+  const searchTerm = location.state?.searchTerm || "";
 
   return (
     <div className="about-page">
       <Header />
       <div className="results-container">
-        <h1>Search Results</h1>
+        <h1>Search Results for "{searchTerm}"</h1>
         <div className="results-grid">
           {data.length > 0 ? (
             data.map((item) => (

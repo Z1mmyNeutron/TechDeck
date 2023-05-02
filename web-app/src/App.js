@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import { postData } from "./serverApi/server.js";
 import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,36 +35,20 @@ import ThemeContext from "./components/ThemeContext";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <MainContent />
-      </>
-    ),
+    element: <MainContent />,
   },
   {
     path: "/article/:id",
-    element: (
-      <>
-        <SingleArticle />
-      </>
-    ),
+    element: <SingleArticle />,
   },
 
   {
     path: "/about",
-    element: (
-      <>
-        <About />
-      </>
-    ),
+    element: <About />,
   },
   {
     path: "/login",
-    element: (
-      <>
-        <Login />
-      </>
-    ),
+    element: <Login />,
   },
   {
     path: "/createUser", //not used yet
@@ -79,65 +62,34 @@ const router = createBrowserRouter([
   },
   {
     path: "/science",
-    element: (
-      <>
-        <Science />
-      </>
-    ),
+    element: <Science />,
   },
   {
     path: "/business",
-    element: (
-      <>
-        <Business />
-      </>
-    ),
+    element: <Business />,
   },
   {
     path: "/technology",
-    element: (
-      <>
-        <Technology />
-      </>
-    ),
+    element: <Technology />,
   },
   {
     path: "/results",
-    element: (
-      <>
-        <Results />
-      </>
-    ),
+    element: <Results />,
   },
   {
     path: "/legal",
-    element: (
-      <>
-        <Legal />
-      </>
-    ),
+    element: <Legal />,
   },
   {
     path: "/privacy",
-    element: (
-      <>
-        <Privacy />
-      </>
-    ),
+    element: <Privacy />,
   },
   {
     path: "*",
-    element: (
-      <>
-        <ErrorPage />
-      </>
-    ),
+    element: <ErrorPage />,
   },
 ]);
 
-{
-  postData("http://localhost:4000", "");
-}
 function App() {
   const { theme } = useContext(ThemeContext);
 

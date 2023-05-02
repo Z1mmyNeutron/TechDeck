@@ -11,7 +11,6 @@ import {
 import ThemeContext from "./ThemeContext";
 import axios from "axios"; // import axios
 import { useNavigate } from "react-router-dom"; // import useNavigate hook
-import Results from "../pages/results";
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -31,7 +30,7 @@ const Header = () => {
         `http://localhost:3005/api/articles/search?term=${searchTerm}`
       );
       // pass the response data to the results page using state
-      navigate("/results", { state: { data: response.data } });
+      navigate("/results", { state: { data: response.data, searchTerm } });
     } catch (err) {
       console.error(err);
     }
