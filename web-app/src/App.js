@@ -4,12 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
 //pages
-
+import { LoginMessagePage } from "./pages/loginMessagePage.jsx";
 import { Login } from "./pages/login";
 import About from "./pages/about";
 import { Science } from "./pages/science";
 import { Business } from "./pages/business";
 import { Technology } from "./pages/technology";
+import { Registration } from "./pages/registration";
 import Results from "./pages/results";
 import ErrorPage from "./pages/errorPage";
 
@@ -47,8 +48,16 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
+    path:"/registration",
+    element:<Registration/>
+  },
+  {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path:"/loginMessagePage",
+    element:<LoginMessagePage/>
   },
   {
     path: "/createUser",

@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { postData } from '../serverApi/server';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-export function Registration() {
+export function LoginMessagePage() {
   
     return (
         
         <div class="topLevel">
-         
-            <p>Congradulations, you have successfully registered! </p>
-       
+     
+          <div style={{minHeight: "90vh", color: "black"}}>
+            <p>Login Successful </p>
+          </div>
         </div>
     )
 }

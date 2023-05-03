@@ -52,6 +52,7 @@ export function Login() {
           </FormGroup>
 
           <ButtonGroup className="mt-3">
+            <a href="/registration">
             <Button
               variant="primary"
               type="submit"
@@ -66,6 +67,7 @@ export function Login() {
             >
               Login
             </Button>
+            </a>
             <a href="/createUser">
             <Button
               variant="secondary"
