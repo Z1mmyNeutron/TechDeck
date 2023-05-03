@@ -51,7 +51,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/createUser", //not used yet
+    path: "/createUser",
     element: (
       <>
         <Header />

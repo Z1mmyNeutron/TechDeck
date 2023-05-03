@@ -11,8 +11,10 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles.css";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 export function Login() {
+ 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -64,17 +66,12 @@ export function Login() {
             >
               Login
             </Button>
-
+            <a href="/createUser">
             <Button
               variant="secondary"
-              type="button"
-              onClick={() => {
-                // registration page needs to be built called /createUser/
-                console.log("Register button clicked");
-              }}
-            >
+              type="button">
               Register
-            </Button>
+            </Button></a>
           </ButtonGroup>
 
           {serverData && <p>{JSON.stringify(serverData)}</p>}

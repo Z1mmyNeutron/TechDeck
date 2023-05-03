@@ -6,6 +6,8 @@ export function CreateUser() {
     const [age, setAge] = useState(0);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    
     return (
         <div class="topLevel">
 
@@ -32,11 +34,16 @@ export function CreateUser() {
                     setPassword(event.target.value)
                     }}
              />
+              <label>email: </label>
+            <input type="text" name="email" onChange={(event) =>{
+                    setEmail(event.target.value)
+                    }}
+             />
 
 
             <input type="button" value="save" onClick={async (event) => {
                 let result = await postData("http://localhost:4000/createUser/",
-                    { username: username, password: password, age : age, name : name })
+                    { username: username, password: password, age : age, name : name, email : email })
 
                 console.log(result)
             }}
