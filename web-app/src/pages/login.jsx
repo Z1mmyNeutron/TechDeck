@@ -35,6 +35,7 @@ export function Login() {
               value={username}
               onChange={(event) => {
                 setUsername(event.target.value);
+                localStorage.setItem('username', event.target.value)
               }}
             />
           </FormGroup>
@@ -47,27 +48,29 @@ export function Login() {
               value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
+                localStorage.setItem('password', event.target.value)
               }}
             />
           </FormGroup>
 
           <ButtonGroup className="mt-3">
-            <a href="/registration">
+            <a href="/loginMessagePage">
             <Button
               variant="primary"
-              type="submit"
-              onClick={async (event) => {
-                event.preventDefault(); // Prevent page reload
-                let result = await postData("http://localhost:3005/login", {
-                  username: username,
-                  password: password,
-                });
-                setServerData(result.body.data);
-              }}
+              type="button"
+              // onClick={async (event) => {
+              //   event.preventDefault(); // Prevent page reload
+              //   let result = await postData("http://localhost:3005/login", {
+              //     username: username,
+              //     password: password,
+              //   });
+              //   setServerData(result.body.data);
+              // }}
             >
               Login
             </Button>
             </a>
+            
             <a href="/createUser">
             <Button
               variant="secondary"

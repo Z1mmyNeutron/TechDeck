@@ -9,6 +9,8 @@ export function Registration() {
         <div class="topLevel">
          
             <p>Congradulations, you have successfully registered! </p>
+            <a href='/'><button>Return home</button></a>
+            <a href='/loginMessagePage'> <button> Return to userprofile</button></a>
        
         </div>
     )
