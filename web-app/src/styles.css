@@ -225,7 +225,7 @@ img {
 }
 
 .results-grid > * {
-  flex-basis: calc(50% - 1em); /* 1em for space between */
+  flex-basis: calc(50% - 1em);
 }
 
 .main-content-wrapper {
