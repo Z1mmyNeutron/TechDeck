@@ -1,3 +1,4 @@
+//David Ranoia
 const mongoose = require("mongoose");
 
 const dotenv = require("dotenv");
@@ -12,6 +13,7 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("Connected to MongoDB Atlas!");
 });
+//Christina Zimemr
 const UserSchema = new mongoose.Schema({
   username:{
     type: String,

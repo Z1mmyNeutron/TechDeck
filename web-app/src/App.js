@@ -34,7 +34,7 @@ import ThemeProvider from "./components/Theme";
 import ThemeContext from "./components/ThemeContext";
 
 
-
+//Christina Zimmer
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,10 +54,6 @@ const router = createBrowserRouter([
     element:<Registration/>
   },
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
     path:"/loginMessagePage",
     element:<LoginMessagePage/>
   },
@@ -71,6 +67,13 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  //DJ Turner
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  //David Ranoia
+  
   {
     path: "/science",
     element: <Science />,

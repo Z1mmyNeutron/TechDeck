@@ -1,3 +1,7 @@
+//Christina Zimmer -> Express Server + navbar
+//David Ranoia -> Mongo db hookup and additional paths
+//Router.get functions are written by David App.get/use are written by Christina 
+
 var createError = require("http-errors");
 const dotenv = require("dotenv");
 dotenv.config();
