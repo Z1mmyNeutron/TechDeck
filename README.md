@@ -9,7 +9,7 @@ Updated 5/1
 
 ### Short Version Mac
 
-# Running start_servers.sh on Mac
+## Running start_servers.sh on Mac
 
 The `start_servers.sh` script is designed to start several servers for a web application. Here are the steps to run it on a Mac:
 
@@ -28,19 +28,19 @@ To run the `start_servers.sh` script, follow these steps:
 1. Open the Terminal app on your Mac
 2. Navigate to the directory where the `start_servers.sh` file is located using the `cd` command. For example, if the file is located in the `~javascriptfinalproject/startServersOnMac/` directory, you would type the following command in the Terminal:
 
-   ```
+   ```bash
    cd ~javascriptfinalproject/startServersOnMac/
    ```
 
 3. Make the script executable by running the following command:
 
-   ```
+   ```bash
    chmod +x start_servers.sh
    ```
 
 4. Finally, run the script by typing the following command:
 
-   ```
+   ```bash
    ./start_servers.sh
    ```
 
