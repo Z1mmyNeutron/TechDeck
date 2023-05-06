@@ -83,4 +83,5 @@ Open second terminal for backend: Back end:
 
 1. start in JS_Final_Project folder
 2. cd back-end/api
-3. npm run start
+3. npm install
+4. npm run start

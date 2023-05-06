@@ -11,8 +11,10 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles.css";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 export function Login() {
+ 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,6 +35,7 @@ export function Login() {
               value={username}
               onChange={(event) => {
                 setUsername(event.target.value);
+                localStorage.setItem('username', event.target.value)
               }}
             />
           </FormGroup>
@@ -45,36 +48,35 @@ export function Login() {
               value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
+                localStorage.setItem('password', event.target.value)
               }}
             />
           </FormGroup>
 
           <ButtonGroup className="mt-3">
+            <a href="/loginMessagePage">
             <Button
               variant="primary"
-              type="submit"
-              onClick={async (event) => {
-                event.preventDefault(); // Prevent page reload
-                let result = await postData("http://localhost:3005/login", {
-                  username: username,
-                  password: password,
-                });
-                setServerData(result.body.data);
-              }}
+              type="button"
+              // onClick={async (event) => {
+              //   event.preventDefault(); // Prevent page reload
+              //   let result = await postData("http://localhost:3005/login", {
+              //     username: username,
+              //     password: password,
+              //   });
+              //   setServerData(result.body.data);
+              // }}
             >
               Login
             </Button>
-
+            </a>
+            
+            <a href="/createUser">
             <Button
               variant="secondary"
-              type="button"
-              onClick={() => {
-                // registration page needs to be built called /createUser/
-                console.log("Register button clicked");
-              }}
-            >
+              type="button">
               Register
-            </Button>
+            </Button></a>
           </ButtonGroup>
 
           {serverData && <p>{JSON.stringify(serverData)}</p>}

@@ -12,5 +12,25 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("Connected to MongoDB Atlas!");
 });
+const UserSchema = new mongoose.Schema({
+  username:{
+    type: String,
+    required: true,
+  },
+  name:{
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
+})
+const User = mongoose.model('users', UserSchema);
+User.createIndexes();
+
+
 
 module.exports = db;
